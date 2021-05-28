@@ -12,6 +12,7 @@
         sendAnonymousUsage: false
       log:
         level: INFO
+      accessLog: {}
       api:
         dashboard: true
       entryPoints:
@@ -27,7 +28,6 @@
       providers:
         docker:
           defaultRule: Host(`{{ '{{' }} trimPrefix `/` .Name {{ '}}' }}.docker.localhost`)
-      accessLog: {}
     traefik_env_vars:
       TRAEFIK_API_DEBUG: true
   roles:
