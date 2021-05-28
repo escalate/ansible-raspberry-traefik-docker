@@ -14,8 +14,8 @@ def test_writeable_directories(host):
     """Check writeable directories"""
     d = host.file("/var/lib/traefik")
     assert d.is_directory
-    assert d.user == "nobody"
-    assert d.group == "nogroup"
+    assert d.user == "root"
+    assert d.group == "root"
     assert d.mode == 0o700
 
 

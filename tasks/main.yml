@@ -12,8 +12,8 @@
   ansible.builtin.file:
     path: "{{ traefik_data_path }}"
     state: directory
-    owner: nobody
-    group: nogroup
+    owner: root
+    group: root
     mode: 0700
 
 - name: Create service configuration
