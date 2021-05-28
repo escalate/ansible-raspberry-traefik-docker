@@ -18,21 +18,29 @@
   notify: Restart traefik service
 
 - name: Define environment variables
-  ansible.builtin.template:
-    src: traefik.env.j2
-    dest: "{{ traefik_etc_path }}/traefik.env"
+  community.general.ini_file:
+    path: "{{ traefik_etc_path }}/traefik.env"
+    section: ""
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+    no_extra_spaces: true
     owner: root
     group: root
     mode: 0644
+  loop: "{{ traefik_env_vars | dict2items }}"
   notify: Restart traefik service
 
 - name: Define Docker container labels
-  ansible.builtin.template:
-    src: traefik.label.j2
-    dest: "{{ traefik_etc_path }}/traefik.label"
+  community.general.ini_file:
+    path: "{{ traefik_etc_path }}/traefik.label"
+    section: ""
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+    no_extra_spaces: true
     owner: root
     group: root
     mode: 0644
+  loop: "{{ traefik_docker_labels | dict2items }}"
   notify: Restart traefik service
 
 - name: Pull Docker image

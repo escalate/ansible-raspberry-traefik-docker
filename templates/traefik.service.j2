@@ -11,8 +11,12 @@ ExecStartPre=/usr/bin/docker pull traefik:{{ traefik_docker_image_version }}
 ExecStart=/usr/bin/docker run \
 --init \
 --memory={{ traefik_docker_memory }} \
+{% if traefik_env_vars | dict2items | length > 0 %}
 --env-file={{ traefik_etc_path }}/traefik.env \
+{% endif %}
+{% if traefik_docker_labels | dict2items | length > 0 %}
 --label-file={{ traefik_etc_path }}/traefik.label \
+{% endif %}
 --mount=type=bind,source={{ traefik_etc_path }},destination=/etc/traefik,readonly=true \
 --mount=type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock,readonly=true \
 --name %n \
