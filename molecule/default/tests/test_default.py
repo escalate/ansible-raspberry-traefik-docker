@@ -38,8 +38,7 @@ def test_traefik_config(host):
                 "  level: INFO\n"
                 "providers:\n"
                 "  docker:\n"
-                "    defaultRule: "
-                "Host(`{{ trimPrefix `/` .Name }}.docker.localhost`)\n"
+                "    exposedByDefault: false\n"
     )
     assert config in f.content_string
 

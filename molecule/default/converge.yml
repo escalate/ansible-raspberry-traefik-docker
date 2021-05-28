@@ -27,7 +27,7 @@
           address: ":443"
       providers:
         docker:
-          defaultRule: Host(`{{ '{{' }} trimPrefix `/` .Name {{ '}}' }}.docker.localhost`)
+          exposedByDefault: false
     traefik_env_vars:
       TRAEFIK_API_DEBUG: true
   roles:

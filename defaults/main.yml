@@ -36,6 +36,6 @@ traefik_config:
   #         provider: cloudflare
   providers:
     docker:
-      defaultRule: Host(`{{ '{{' }} trimPrefix `/` .Name {{ '}}' }}.docker.localhost`)
+      exposedByDefault: false
 
 traefik_env_vars: {}
