@@ -24,7 +24,7 @@ ExecStart=/usr/bin/docker run \
 --publish=80:80 \
 --publish=443:443 \
 --publish=127.0.0.1:8080:8080 \
---user=nobody:nogroup \
+--user=nobody:docker \
 traefik:{{ traefik_docker_image_version }}
 ExecStop=/usr/bin/docker stop %n
 SyslogIdentifier=%n
