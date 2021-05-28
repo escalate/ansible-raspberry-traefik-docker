@@ -20,7 +20,7 @@ def test_traefik_config(host):
     config = (
                 "accessLog: {}\n"
                 "api:\n"
-                "  insecure: true\n"
+                "  dashboard: true\n"
                 "entryPoints:\n"
                 "  web:\n"
                 "    address: :80\n"
@@ -55,5 +55,5 @@ def test_traefik_docker_container(host):
     d = host.docker("traefik.service").inspect()
     assert d["HostConfig"]["Memory"] == 1073741824
     assert d["Config"]["Image"] == "traefik:latest"
-    assert d["Config"]["Labels"]["maintainer"] == '"me@example.com"'
+    assert d["Config"]["Labels"]["maintainer"] == "me@example.com"
     assert "TRAEFIK_API_DEBUG=True" in d["Config"]["Env"]
