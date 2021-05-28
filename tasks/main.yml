@@ -69,8 +69,12 @@
 
 - name: Wait for service to become available
   ansible.builtin.uri:
-    url: http://localhost:8080/api/version
+    url: http://localhost/
+    status_code:
+      - 200
+      - 301
+    follow_redirects: none
   register: result
-  until: result.status == 200
+  until: result.status == 200 or result.status == 301
   retries: 60
   delay: 1
