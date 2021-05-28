@@ -22,6 +22,17 @@ traefik_config:
             scheme: https
     websecure:
       address: ":443"
+      # http:
+      #   tls:
+      #     certResolver: letsencryptresolver
+  # certificatesResolvers:
+  #   letsencryptresolver:
+  #     acme:
+  #       email: me@example.com
+  #       storage: acme.json
+  #       caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+  #       dnsChallenge:
+  #         provider: cloudflare
   providers:
     docker:
       defaultRule: Host(`{{ '{{' }} trimPrefix `/` .Name {{ '}}' }}.docker.localhost`)
