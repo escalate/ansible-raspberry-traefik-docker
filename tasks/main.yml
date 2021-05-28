@@ -8,6 +8,14 @@
   loop:
     - "{{ traefik_etc_path }}"
 
+- name: Create writeable data directory
+  ansible.builtin.file:
+    path: "{{ traefik_data_path }}"
+    state: directory
+    owner: nobody
+    group: nogroup
+    mode: 0700
+
 - name: Create service configuration
   ansible.builtin.template:
     src: traefik.yml.j2

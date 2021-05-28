@@ -10,6 +10,15 @@ def test_read_only_directories(host):
     assert f.mode == 0o755
 
 
+def test_writeable_directories(host):
+    """Check writeable directories"""
+    d = host.file("/var/lib/traefik")
+    assert d.is_directory
+    assert d.user == "nobody"
+    assert d.group == "nogroup"
+    assert d.mode == 0o700
+
+
 def test_traefik_config(host):
     """Check Traefik config file"""
     f = host.file("/etc/traefik/traefik.yml")

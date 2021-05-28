@@ -2,6 +2,7 @@ traefik_docker_image_version: latest
 traefik_docker_memory: 1G
 traefik_docker_labels: {}
 
+traefik_data_path: /var/lib/traefik
 traefik_etc_path: /etc/traefik
 
 traefik_config:
