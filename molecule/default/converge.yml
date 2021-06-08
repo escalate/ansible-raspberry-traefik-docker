@@ -5,6 +5,7 @@
     traefik_docker_memory: 1G
     traefik_docker_labels:
       maintainer: me@example.com
+    traefik_docker_network: internal
     traefik_etc_path: /etc/traefik
     traefik_config:
       global:
