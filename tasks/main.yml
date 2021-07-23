@@ -27,7 +27,7 @@
 
 - name: Define environment variables
   community.general.ini_file:
-    path: "{{ traefik_etc_path }}/traefik.env"
+    path: /etc/traefik.env
     section: ""
     option: "{{ item.key }}"
     value: "{{ item.value }}"
@@ -40,7 +40,7 @@
 
 - name: Define Docker container labels
   community.general.ini_file:
-    path: "{{ traefik_etc_path }}/traefik.label"
+    path: /etc/traefik.label
     section: ""
     option: "{{ item.key }}"
     value: "{{ item.value }}"
