@@ -14,9 +14,9 @@ def test_data_directory(host):
     """Check data directory"""
     d = host.file("/var/lib/traefik")
     assert d.is_directory
-    assert d.user == "root"
+    assert d.user == "traefik"
     assert d.group == "root"
-    assert d.mode == 0o700
+    assert d.mode == 0o775
 
 
 def test_traefik_config(host):
