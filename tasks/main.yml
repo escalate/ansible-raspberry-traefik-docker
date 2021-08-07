@@ -84,7 +84,7 @@
 
 - name: Wait for service to become available
   ansible.builtin.uri:
-    url: http://localhost/
+    url: http://localhost:80/
     status_code:
       - 200
       - 301
