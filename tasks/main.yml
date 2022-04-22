@@ -1,5 +1,5 @@
 - name: Get all groups
-  getent:
+  ansible.builtin.getent:
     database: group
     split: ':'
 
