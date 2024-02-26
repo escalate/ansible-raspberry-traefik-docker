@@ -69,10 +69,16 @@
     mode: 0644
   notify: Restart traefik service
 
-- name: Start and enable service
+- name: Start service
   ansible.builtin.systemd:
     name: traefik
     state: started
+    daemon_reload: true
+  register: traefik_service_started
+
+- name: Enable service
+  ansible.builtin.systemd:
+    name: traefik
     enabled: true
     daemon_reload: true
 
