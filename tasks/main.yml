@@ -17,7 +17,7 @@
     state: directory
     owner: root
     group: root
-    mode: 0755
+    mode: "0755"
 
 - name: Create data directory
   ansible.builtin.file:
@@ -25,7 +25,7 @@
     state: directory
     owner: traefik
     group: root
-    mode: 0775
+    mode: "0775"
 
 - name: Create service configuration
   ansible.builtin.template:
@@ -33,7 +33,7 @@
     dest: "{{ traefik_etc_path }}/traefik.yml"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   no_log: true
   notify: Restart traefik service
 
@@ -43,7 +43,7 @@
     dest: /etc/traefik.env
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart traefik service
 
 - name: Define Docker container labels
@@ -52,7 +52,7 @@
     dest: /etc/traefik.label
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart traefik service
 
 - name: Pull Docker image
@@ -66,7 +66,7 @@
     dest: /etc/systemd/system/traefik.service
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   notify: Restart traefik service
 
 - name: Start service

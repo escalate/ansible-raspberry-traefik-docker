@@ -67,5 +67,4 @@ def test_traefik_docker_container(host):
     assert d["Config"]["Labels"]["maintainer"] == "me@example.com"
     assert "TRAEFIK_API_DEBUG=true" in d["Config"]["Env"]
     assert "internal" in d["NetworkSettings"]["Networks"]
-    assert \
-        "traefik" in d["NetworkSettings"]["Networks"]["internal"]["Aliases"]
+    assert "traefik" in d["NetworkSettings"]["Networks"]["internal"]["Aliases"]
